@@ -1,13 +1,7 @@
 from random import choice, randint
-
 import pygame
 
 
-"""
-Здесь были внесены небольшие изменения
-с целью убоать пустой хвост отстающий от тела.
-"""
-# Константы для размеров поля и сетки:
 SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
 GRID_SIZE = 20
 GRID_WIDTH = SCREEN_WIDTH // GRID_SIZE
@@ -59,7 +53,7 @@ class GameObject():
         pass
 
     def draw_object(self, position, color):
-        '''как закрасить пиксель??? (Нашел в прекоде).'''
+        """как закрасить пиксель??? (Нашел в прекоде)."""
         head_rect = pygame.Rect(position, (GRID_SIZE, GRID_SIZE))
         pygame.draw.rect(screen, color, head_rect)
         pygame.draw.rect(screen, BORDER_COLOR, head_rect, 1)
@@ -136,9 +130,7 @@ class Apple(GameObject):
         self.position = width, height
 
     def draw(self):
-        """
-        Метод отвечающий за покраску яблока.
-        """
+        """Метод отвечающий за покраску яблока."""
         for position in self.positions:
             rect = pygame.Rect(position, (GRID_SIZE, GRID_SIZE))
             pygame.draw.rect(screen, self.body_color, rect)
