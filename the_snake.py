@@ -3,10 +3,10 @@ from random import choice, randint
 import pygame
 
 
-'''
+"""
 Здесь были внесены небольшие изменения
 с целью убоать пустой хвост отстающий от тела.
-'''
+"""
 # Константы для размеров поля и сетки:
 SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
 GRID_SIZE = 20
@@ -46,10 +46,10 @@ clock = pygame.time.Clock()
 
 # Тут опишите все классы игры.
 class GameObject():
-    '''
+    """
     Родительский класс с общими методами для дочерних
     (стартовая позиция и покраска).
-    '''
+    """
 
     def __init__(self, body_color=None):
         self.position = ((SCREEN_WIDTH // 2), (SCREEN_HEIGHT // 2))
@@ -66,10 +66,10 @@ class GameObject():
 
 
 class Snake(GameObject):
-    '''
+    """
     Класс описывающий непосредственно змейку
     (унаследован от Gameobjects).
-    '''
+    """
 
     def __init__(self, body_color=SNAKE_COLOR):
         super().__init__(body_color)
@@ -78,20 +78,20 @@ class Snake(GameObject):
         self.next_direction = None
 
     def get_head_position(self):
-        '''Метод для получения координат головы змеи.'''
+        """Метод для получения координат головы змеи."""
         return self.positions[0]
 
     def update_direction(self):
-        '''Метод отвечающий за обновление движения змейки'''
+        """Метод отвечающий за обновление движения змейки."""
         if self.next_direction:
             self.direction = self.next_direction
             self.next_direction = None
 
     def reset(self):
-        '''
+        """
         Метод сброса игрового поля в исходное состояние
         при поражении.
-        '''
+        """
         self.length = 1
         self.positions = [self.position]
         self.last = None
@@ -99,10 +99,10 @@ class Snake(GameObject):
         self.direction = choice((UP, RIGHT, DOWN, LEFT))
 
     def move(self):
-        '''
+        """
         Метод отвечающий за обновление состояния змейки,
-        а именно за добавление головы
-        '''
+        а именно за добавление головы.
+        """
         head_x, head_y = self.get_head_position()
         dx, dy = self.direction
         new_x = (head_x + dx * GRID_SIZE) % SCREEN_WIDTH
@@ -117,28 +117,28 @@ class Snake(GameObject):
 
 
 class Apple(GameObject):
-    '''
+    """
     Класс описывающий "Яблоко",
     его цвет и позицию на поле. Унаследован от Gameobjects.
-    '''
+    """
 
     def __init__(self, body_color=APPLE_COLOR):
         super().__init__(body_color)
         self.randomize_position()
 
     def randomize_position(self):
-        '''
+        """
         Было подправленно после того,
         как яблоко появилось за игровым полем (это было забавно).
-        '''
+        """
         width = GRID_SIZE * randint(0, GRID_WIDTH - 1)
         height = GRID_SIZE * randint(0, GRID_HEIGHT - 1)
         self.position = width, height
 
     def draw(self):
-        '''
-        Метод отвечающий за покраску яблока
-        '''
+        """
+        Метод отвечающий за покраску яблока.
+        """
         for position in self.positions:
             rect = pygame.Rect(position, (GRID_SIZE, GRID_SIZE))
             pygame.draw.rect(screen, self.body_color, rect)
@@ -146,10 +146,10 @@ class Apple(GameObject):
 
 
 def handle_keys(game_object):
-    '''
+    """
     Функция взята из прекода,
-    отвечает за управление змейкой с помощью нажатий клавиш
-    '''
+    отвечает за управление змейкой с помощью нажатий клавиш.
+    """
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -166,10 +166,10 @@ def handle_keys(game_object):
 
 
 def stop_game(snake):
-    '''
+    """
     Данная функция отвечает за то, чтобы игры не шла по круга
     в случае столкновения с телом.
-    '''
+    """
     if snake.get_head_position() in snake.positions[1:]:
         game_over = True
         while game_over:
@@ -193,7 +193,7 @@ def stop_game(snake):
 
 
 def main():
-    '''Основная функция отвечающая за вход в программу'''
+    """Основная функция отвечающая за вход в программу."""
     pygame.init()
     snake = Snake()
     apple = Apple()
