@@ -1,4 +1,5 @@
 from random import choice, randint
+
 import pygame
 
 
@@ -50,6 +51,7 @@ class GameObject():
         self.body_color = body_color
 
     def draw(self):
+        """Метод общей отрисовки"""
         pass
 
     def draw_object(self, position, color):
@@ -168,7 +170,7 @@ def stop_game(snake):
             screen.fill(BOARD_BACKGROUND_COLOR)  # Очищаем экран
             font = pygame.font.Font(None, 36)
             text = font.render(
-                "Game Over! Press Space to continue", True, (255, 255, 255))
+                'Game Over! Press Space to continue', True, (255, 255, 255))
             text_rect = text.get_rect(
                 center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
             screen.blit(text, text_rect)
