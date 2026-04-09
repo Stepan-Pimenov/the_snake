@@ -2,6 +2,7 @@ from random import choice, randint
 
 import pygame
 
+
 '''
 Здесь были внесены небольшие изменения
 с целью убоать пустой хвост отстающий от тела.
@@ -49,6 +50,7 @@ class GameObject():
     Родительский класс с общими методами для дочерних
     (стартовая позиция и покраска).
     '''
+
     def __init__(self, body_color=None):
         self.position = ((SCREEN_WIDTH // 2), (SCREEN_HEIGHT // 2))
         self.body_color = body_color
@@ -68,6 +70,7 @@ class Snake(GameObject):
     Класс описывающий непосредственно змейку
     (унаследован от Gameobjects).
     '''
+
     def __init__(self, body_color=SNAKE_COLOR):
         super().__init__(body_color)
         self.reset()
@@ -90,7 +93,7 @@ class Snake(GameObject):
         при поражении.
         '''
         self.length = 1
-        self.positions = [self.position] 
+        self.positions = [self.position]
         self.last = None
         self.position = ((SCREEN_WIDTH // 2), (SCREEN_HEIGHT // 2))
         self.direction = choice((UP, RIGHT, DOWN, LEFT))
@@ -118,6 +121,7 @@ class Apple(GameObject):
     Класс описывающий "Яблоко",
     его цвет и позицию на поле. Унаследован от Gameobjects.
     '''
+
     def __init__(self, body_color=APPLE_COLOR):
         super().__init__(body_color)
         self.randomize_position()
@@ -222,4 +226,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-'''Приятной игры!'''
