@@ -184,6 +184,7 @@ def handle_keys(game_object):
 
 
 def main():
+    """Функция отвечающая за вход в программу"""
     pg.init()
     snake = Snake()
     apple = Apple(snake)
