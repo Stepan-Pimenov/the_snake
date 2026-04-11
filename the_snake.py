@@ -80,14 +80,13 @@ class Snake(GameObject):
         """Метод отвечающий за обновление состояния змейки."""
         head_x, head_y = self.get_head_position()
         step_x, step_y = self.direction
-        new_head = ((head_x + step_x * GRID_SIZE) % SCREEN_WIDTH,
-                    (head_y + step_y * GRID_SIZE) % SCREEN_HEIGHT)
-        self.positions.insert(0, new_head)
-
+        self.positions.insert(0, ((head_x + step_x * GRID_SIZE) % SCREEN_WIDTH,
+                              (head_y + step_y * GRID_SIZE) % SCREEN_HEIGHT))
         if len(self.positions) > self.length:
             self.last = self.positions.pop()
         else:
             self.last = None
+
 
     def draw_object(self, position, color):
         """Закрашивает ячейку с заданной позицией и цветом."""
