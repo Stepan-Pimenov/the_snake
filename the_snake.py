@@ -41,6 +41,7 @@ clock = pg.time.Clock()
 # Тут опишите все классы игры.
 class GameObject():
     """Родительский класс с общими методами для дочерних."""
+
     def __init__(self, body_color=None):
         self.position = ((SCREEN_WIDTH // 2), (SCREEN_HEIGHT // 2))
         self.body_color = body_color
@@ -51,6 +52,7 @@ class GameObject():
 
 class Snake(GameObject):
     """Дочерний класс описывающий змейку."""
+    
     def __init__(self, body_color=SNAKE_COLOR):
         super().__init__(body_color)
         self.reset()
@@ -105,6 +107,7 @@ class Snake(GameObject):
 
 class Apple(GameObject):
     """Дочерний класс описывающий 'Яблоко'."""
+    
     def __init__(self, occupied_positions=(), body_color=APPLE_COLOR):
         super().__init__(body_color)
         self.randomize_position(occupied_positions)
