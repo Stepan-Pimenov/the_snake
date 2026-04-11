@@ -87,7 +87,6 @@ class Snake(GameObject):
         else:
             self.last = None
 
-
     def draw_object(self, position, color):
         """Закрашивает ячейку с заданной позицией и цветом."""
         head_rect = pg.Rect(position, (GRID_SIZE, GRID_SIZE))
