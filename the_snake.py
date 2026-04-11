@@ -169,7 +169,7 @@ def main():
         handle_keys(snake)
         snake.update_direction()
         snake.move()
-        if snake.get_head_position() in snake.positions[1:]:
+        if snake.get_head_position() in snake.positions[4:]:
             screen.fill(BOARD_BACKGROUND_COLOR)
             snake.reset()
             apple.randomize_position(snake.positions)
