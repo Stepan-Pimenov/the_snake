@@ -52,7 +52,7 @@ class GameObject():
 
 class Snake(GameObject):
     """Дочерний класс описывающий змейку."""
-    
+
     def __init__(self, body_color=SNAKE_COLOR):
         super().__init__(body_color)
         self.reset()
@@ -107,7 +107,7 @@ class Snake(GameObject):
 
 class Apple(GameObject):
     """Дочерний класс описывающий 'Яблоко'."""
-    
+
     def __init__(self, occupied_positions=(), body_color=APPLE_COLOR):
         super().__init__(body_color)
         self.randomize_position(occupied_positions)
